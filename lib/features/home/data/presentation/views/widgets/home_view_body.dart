@@ -10,17 +10,21 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child:  Column(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 30),
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           CustomAppBar(),
           // CustomListViewItem(),
           FeaturedBooksListView(),
-          SizedBox(height:  16),
-          Text("Best Seller",
-          style: Styles.textSyle18.copyWith(fontFamily: kGtSectraFine),
+          SizedBox(height: 50),
+          Text(
+            "Best Seller",
+            style: Styles.textSyle18.copyWith(fontFamily: kGtSectraFine),
+          ),
+          const SizedBox(
+            height: 20,
           ),
           BestSellerListViewItem(),
         ],
@@ -37,24 +41,38 @@ class BestSellerListViewItem extends StatelessWidget {
     return SizedBox(
       height: 140,
       child: Row(
-      children: [
-        AspectRatio(
-        aspectRatio: 2.5/4,
-        child: Container(
-          
-          decoration:  BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
-            image:const DecorationImage(
-              fit: BoxFit.fill,
-              image: AssetImage(
-                Assets.testImage,
+        children: [
+          AspectRatio(
+            aspectRatio: 2.5 / 4,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                image: const DecorationImage(
+                  fit: BoxFit.fill,
+                  image: AssetImage(
+                    Assets.testImage,
+                  ),
+                ),
               ),
             ),
           ),
-        ),
-      ),
-      ],
-      
+          const SizedBox(
+            width: 30,
+          ),
+          Column(
+            children: [
+              SizedBox(
+                width: MediaQuery.of(context).size.width * .5,
+                child:const Text(
+                  maxLines: 2,
+                  'Harry Potter and the Goblet of Fire',
+                  overflow: TextOverflow.ellipsis,
+                  style: Styles.textSyle20,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
