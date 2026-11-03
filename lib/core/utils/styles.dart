@@ -12,7 +12,6 @@ fontWeight: FontWeight.w600
 static const textSyle20 = TextStyle(
 fontSize: 20,
 fontWeight: FontWeight.normal,
-fontFamily: kGtSectraFine,
   );
 
   static const textSyle14 = TextStyle(
