@@ -18,14 +18,20 @@ class Bookly extends StatelessWidget {
   routerConfig: AppRouter.router,
   debugShowCheckedModeBanner: false,
   theme: ThemeData.dark().copyWith(
-    scaffoldBackgroundColor: kPrimaryColor,
-    textTheme: GoogleFonts.montserratTextTheme(
-      ThemeData.dark().textTheme,
-    ).apply(
-      bodyColor: Colors.white,
-      displayColor: Colors.white,
-    ),
+  brightness: Brightness.dark,
+  primaryColor: kPrimaryColor,
+  scaffoldBackgroundColor: kPrimaryColor,
+  canvasColor: kPrimaryColor,
+  colorScheme: ThemeData.dark().colorScheme.copyWith(
+    surface: kPrimaryColor,
   ),
+  textTheme: GoogleFonts.montserratTextTheme(
+    ThemeData.dark().textTheme,
+  ).apply(
+    bodyColor: Colors.white,
+    displayColor: Colors.white,
+  ),
+),
   builder: (context, child) {
     return DefaultTextStyle.merge(
       style: const TextStyle(
