@@ -1,4 +1,4 @@
-import 'package:bookly/features/home/data/presentation/views/widgets/best_seller_list_view_item.dart';
+import 'package:bookly/features/home/data/presentation/views/widgets/Best_Seller_List_View_Item.dart';
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
 import 'package:bookly/features/home/data/presentation/views/widgets/Featured_Books_List.dart';
@@ -46,7 +46,7 @@ class HomeViewBody extends StatelessWidget {
               (context, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
-                  child: BestSellerListViewItem(),
+                  child: BookListViewItem(),
                 );
               },
               childCount: 10,
