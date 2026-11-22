@@ -1,26 +1,28 @@
+
 import 'package:bookly/constants.dart';
 import 'package:bookly/core/utils/styles.dart';
-import 'package:bookly/features/home/data/presentation/views/widgets/Best_Seller_List_View_Item.dart';
-import 'package:bookly/features/search/widgets/custom_search_text_field.dart';
+import 'package:bookly/features/home/presentation/views/widgets/Best_Seller_List_View_Item.dart';
+import 'package:bookly/features/search/widgets/Custom_Search_Text_Field.dart';
 import 'package:flutter/material.dart';
+
 class SearchViewBody extends StatelessWidget {
   const SearchViewBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: 30),
       child: Column(
         children: [
-         const CustomSearchTextField(),
-           SizedBox(height: 16,),
+          const CustomSearchTextField(),
+          SizedBox(height: 16),
           Text(
-                  "Search Result",
-                  style: Styles.textSyle18.copyWith(
-                    fontFamily: kGtSectraFine,
-                  ),
+            "Search Result",
+            style: Styles.textSyle18.copyWith(
+              fontFamily: kGtSectraFine,
+            ),
           ),
-          SizedBox(height: 16,),
+          SizedBox(height: 16),
           Expanded(
             child: SearchResultListView(),
           ),
