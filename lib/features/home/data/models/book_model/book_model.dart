@@ -1,68 +1,56 @@
-import 'package:equatable/equatable.dart';
 
-import 'rating.dart';
+import 'package:equatable/equatable.dart';
+import 'doc.dart';
 
 class BookModel extends Equatable {
-	final int? id;
-	final String? title;
-	final int? price;
-	final String? description;
-	final String? category;
-	final String? image;
-	final Rating? rating;
-	final bool? inStock;
-	final String? createdAt;
+  final int? numFound;
+  final int? start;
+  final bool? numFoundExact;
+  final String? documentationUrl;
+  final String? q;
+  final dynamic offset;
+  final List<Doc>? docs;
 
-	const BookModel({
-		this.id, 
-		this.title, 
-		this.price, 
-		this.description, 
-		this.category, 
-		this.image, 
-		this.rating, 
-		this.inStock, 
-		this.createdAt, 
-	});
+  const BookModel({
+    this.numFound,
+    this.start,
+    this.numFoundExact,
+    this.documentationUrl,
+    this.q,
+    this.offset,
+    this.docs,
+  });
 
-	factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
-				id: json['id'] as int?,
-				title: json['title'] as String?,
-				price: json['price'] as int?,
-				description: json['description'] as String?,
-				category: json['category'] as String?,
-				image: json['image'] as String?,
-				rating: json['rating'] == null
-						? null
-						: Rating.fromJson(json['rating'] as Map<String, dynamic>),
-				inStock: json['inStock'] as bool?,
-				createdAt: json['createdAt'] as String?,
-			);
+  factory BookModel.fromJson(Map<String, dynamic> json) => BookModel(
+        numFound: json['numFound'] as int?,
+        start: json['start'] as int?,
+        numFoundExact: json['numFoundExact'] as bool?,
+        documentationUrl: json['documentation_url'] as String?,
+        q: json['q'] as String?,
+        offset: json['offset'],
+        docs: (json['docs'] as List<dynamic>?)
+            ?.map((e) => Doc.fromJson(e as Map<String, dynamic>))
+            .toList(),
+      );
 
-	Map<String, dynamic> toJson() => {
-				'id': id,
-				'title': title,
-				'price': price,
-				'description': description,
-				'category': category,
-				'image': image,
-				'rating': rating?.toJson(),
-				'inStock': inStock,
-				'createdAt': createdAt,
-			};
+  Map<String, dynamic> toJson() => {
+        'numFound': numFound,
+        'start': start,
+        'numFoundExact': numFoundExact,
+        'documentation_url': documentationUrl,
+        'q': q,
+        'offset': offset,
+        'docs': docs?.map((e) => e.toJson()).toList(),
+      };
 
-	@override
-	List<Object?> get props {
-		return [
-				id,
-				title,
-				price,
-				description,
-				category,
-				image,
-				rating,
-				inStock,
-				createdAt,
-		];
-	}
+  @override
+  List<Object?> get props => [
+        numFound,
+        start,
+        numFoundExact,
+        documentationUrl,
+        q,
+        offset,
+        docs,
+      ];
 }
