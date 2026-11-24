@@ -1,4 +1,3 @@
-
 import 'package:bookly/core/errors/failures.dart';
 import 'package:bookly/core/utils/api_service.dart';
 import 'package:bookly/features/home/data/models/book_model/book_model.dart';
@@ -23,7 +22,14 @@ class HomeRepoImpl implements HomeRepo {
 
       return Right(bookModel.docs ?? []);
     } catch (e) {
-      return Left(ServerFailure());
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
     }
   }
 
@@ -38,7 +44,10 @@ class HomeRepoImpl implements HomeRepo {
 
       return Right(bookModel.docs ?? []);
     } catch (e) {
-      return Left(ServerFailure());
+      if (e is DioException) {
+        return Left(ServerFailure.fromDioError(e));
+      }
+      return Left(ServerFailure('Unexpected Error, Please try again'));
     }
   }
 }
